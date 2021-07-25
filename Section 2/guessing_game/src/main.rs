@@ -95,15 +95,23 @@ fn main() {
         */
         //the colon after guess annotates the variables type and allows us to explicitly 
         //define the variables type
-        let guess: u32 = guess.trim()
+        //change expect method for a match to go from throwing an error to error handling
+        let guess: u32 = match guess.trim()
             //parse method takes a string instance and turns it into a number type 
-            .parse()
+            .parse() {
+                //can explicitly tell the Result instance to handle each variant
+                //if Result is Ok then we just return its value
+                Ok(num) => num,
+                //if Result is Err then we go to the next iteration of the loop and ask for 
+                //another guess
+                Err(_) => continue,
+            }; // have to end guess with a semicolon
             /*
                 parse could cause an error, such that the ANSI characters have no way to 
                 convert to a number. As parse could fail it returns a Result type so we can 
                 handle the Result variants with the expect method.
             */
-            .expect("Please type a number!");
+            //.expect("Please type a number!");
         
         /*
             we can use positional arguments in the print line macro as such:
@@ -124,7 +132,12 @@ fn main() {
         match guess.cmp(&secret_number) {
             Ordering::Less => println!("Too Small"),
             Ordering::Greater => println!("Too Large"),
-            Ordering::Equal => println!("You Win!"),
+            Ordering::Equal => {
+                //when cmp returns the variant "Equal" - print "You Win!" and break out of 
+                //infinite loop
+                println!("You Win!");
+                break;
+            }
         }
     }
     
