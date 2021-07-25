@@ -30,7 +30,8 @@ fn main() {
             bound. Can make the upper bound exclusive by sayin start...=end
         */
         .gen_range(1..101);
-    println!("The secret number is: {}", secret_number);
+    //secret number being printed is remove
+    //println!("The secret number is: {}", secret_number);
 
 
     loop {
