@@ -105,9 +105,9 @@ fn main() {
         let a = [3; 5]; //init an array that has length 5 and each entry is the value '3'
 
         //can access elements of an array using indexing as such:
-        let a =[1,2,3,4,5];
+        let a = [1,2,3,4,5];
         let first_elem = a[0];
-        let second_elem = a[1];
+        let second_elem = a[1];  
 
         //program that allows us to read the element of the array at an inputted index:
             let a = [1, 2, 3, 4, 5];
@@ -120,6 +120,7 @@ fn main() {
                 .read_line(&mut index)
                 .expect("Failed to read line");
 
+            //usize is architecture length of the unsigned int - on this computer it is 64 bits
             let index: usize = index
                 .trim()
                 .parse()
